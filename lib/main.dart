@@ -110,7 +110,12 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
-              style: ButtonStyle(),
+              style: ButtonStyle(
+                fixedSize: MaterialStateProperty.all<Size>(
+                  Size(150,
+                      50), // Задайте желаемые значения ширины и высоты кнопки
+                ),
+              ),
               onPressed: _isLoading ? null : () => _searchMovies(context),
               child: _isLoading ? CircularProgressIndicator() : Text('Поиск'),
             ),
@@ -146,8 +151,7 @@ class MovieListPage extends StatelessWidget {
               padding: EdgeInsets.all(16.0),
               child: ListTile(
                 leading: Image.network(
-                  movie[
-                      'image'], // Замените на поле с URL постера из вашего API
+                  movie['image'],
                   width: 50,
                   height: 100,
                   fit: BoxFit.cover,
